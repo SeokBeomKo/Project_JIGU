@@ -6,13 +6,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerMovementFSM movementFSM;
     public Vector2 inputVec;
 
     private float moveSpeed = 5f;
 
     [SerializeField] public Rigidbody2D rigid;
 
-    void FixedUpdate() 
+    private void Update() 
+    {
+        if (movementFSM != null)    movementFSM.currentState.Update();
+    }
+
+    private void FixedUpdate() 
+    {
+        if (movementFSM != null)    movementFSM.currentState.FixedUpdate();
+    }
+
+    public void Move()
     {
         rigid.velocity = inputVec * moveSpeed;
     }

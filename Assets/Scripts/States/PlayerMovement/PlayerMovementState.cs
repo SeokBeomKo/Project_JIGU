@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementState
+public abstract class PlayerState : IState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected PlayerController controller;
+    protected PlayerMovementFSM stateMachine;
+
+    public PlayerState(PlayerController controller)
     {
-        
+        this.controller = controller;
+        this.stateMachine = controller.movementFSM;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Enter();
+    public abstract void Exit();
+    public abstract void FixedUpdate();
+    public abstract void Update();
 }

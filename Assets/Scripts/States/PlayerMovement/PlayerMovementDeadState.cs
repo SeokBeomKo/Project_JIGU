@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementDeadState : IState
+public class PlayerMovementDeadState : PlayerState
 {
-    public void Enter()
+    public PlayerMovementDeadState(PlayerController controller) : base(controller)
+    {
+    }
+
+    public override void Enter()
     {
 
     }
-    public void Update()
+    public override void Update()
     {
 
     }
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
 
     }
-    public void Exit()
+    public override void Exit()
     {
         
     }
