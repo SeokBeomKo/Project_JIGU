@@ -10,7 +10,7 @@ public class PlayerMovementIdleState : PlayerState
 
     public override void Enter()
     {
-
+        controller.rigid.velocity = Vector2.zero;
     }
     public override void Update()
     {

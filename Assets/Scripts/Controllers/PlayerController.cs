@@ -2,34 +2,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
     public PlayerMovementFSM movementFSM;
-    public Vector2 inputVec;
+    public Vector2 moveDirection;
 
     private float moveSpeed = 5f;
 
     [SerializeField] public Rigidbody2D rigid;
 
+    private void Awake() 
+    {
+        FSMFactory<PlayerMovementFSM, PlayerMovementStateEnums, PlayerController> factory = new PlayerMovementFSMFactory();
+        movementFSM = factory.CreateFSM(this);
+    }
+
     private void Update() 
     {
-        if (movementFSM != null)    movementFSM.currentState.Update();
+        if (movementFSM != null)    
+        {
+            movementFSM.currentState.Update();
+        }
     }
 
     private void FixedUpdate() 
     {
-        if (movementFSM != null)    movementFSM.currentState.FixedUpdate();
+        if (movementFSM != null)
+        {
+            movementFSM.currentState.FixedUpdate();
+        }
     }
 
     public void Move()
     {
-        rigid.velocity = inputVec * moveSpeed;
-    }
-
-    void OnMove(InputValue value)
-    {
-        inputVec = value.Get<Vector2>();
+        rigid.velocity = moveDirection * moveSpeed;
     }
 }

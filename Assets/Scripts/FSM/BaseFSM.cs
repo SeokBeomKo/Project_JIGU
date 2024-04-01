@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseFSM<T>
+public abstract class BaseFSM<T> : MonoBehaviour
 {
     protected Dictionary<T, IState> states = new Dictionary<T, IState>();
     public IState currentState;

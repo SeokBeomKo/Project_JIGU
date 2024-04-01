@@ -18,7 +18,7 @@ public class PlayerMovementMoveState : PlayerState
     }
     public override void FixedUpdate()
     {
-
+        controller.Move();
     }
     public override void Exit()
     {
