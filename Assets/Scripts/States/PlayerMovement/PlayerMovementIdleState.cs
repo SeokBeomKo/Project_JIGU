@@ -10,6 +10,7 @@ public class PlayerMovementIdleState : PlayerState
 
     public override void Enter()
     {
+        controller.animator.Play("IDLE");
         controller.rigid.velocity = Vector2.zero;
     }
     public override void Update()

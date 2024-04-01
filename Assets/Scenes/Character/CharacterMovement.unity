@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e6dd8c21ba297409d293254057bea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1213702610}
   movementFSM: {fileID: 0}
   moveDirection: {x: 0, y: 0}
   rigid: {fileID: 155278054}

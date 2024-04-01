@@ -10,7 +10,7 @@ public class PlayerMovementMoveState : PlayerState
 
     public override void Enter()
     {
-
+        controller.animator.Play("MOVE");
     }
     public override void Update()
     {
