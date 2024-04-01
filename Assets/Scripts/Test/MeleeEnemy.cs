@@ -8,6 +8,7 @@ public class MeleeEnemy : MonoBehaviour
     public Rigidbody2D target;
 
     bool isLive = true;
+
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
 
