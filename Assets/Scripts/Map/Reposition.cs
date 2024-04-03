@@ -5,6 +5,13 @@ using UnityEngine;
 public class Reposition : MonoBehaviour
 {
     public PlayerTest player;
+    Collider2D coll;
+
+    private void Awake()
+    {
+        coll = GetComponent<Collider2D>();
+    }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -34,6 +41,10 @@ public class Reposition : MonoBehaviour
                 }
                 break;
             case "Enemy":
+                if(coll.enabled)
+                {
+                    transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)) ; //50 : ¸Ê Å©±â ¸¸Å­
+                }
                 break;
         }
     }
