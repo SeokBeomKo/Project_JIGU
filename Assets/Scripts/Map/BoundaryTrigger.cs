@@ -6,7 +6,7 @@ public class BoundaryTrigger : MonoBehaviour
 {
     public PlayerTest player;
 
-    public delegate void TriggerHandler(Direction direction);
+    public delegate void TriggerHandler(DirectionEnums direction);
     public event TriggerHandler OnTrigger;
 
     private Collider2D Collider;
@@ -25,13 +25,13 @@ public class BoundaryTrigger : MonoBehaviour
 
         if (diffX > diffY)
         {
-            if (playerDir.x < 0) OnTrigger?.Invoke(Direction.LEFT);
-            else OnTrigger?.Invoke(Direction.RIGHT);
+            if (playerDir.x < 0) OnTrigger?.Invoke(DirectionEnums.LEFT);
+            else OnTrigger?.Invoke(DirectionEnums.RIGHT);
         }
         else
         {
-            if (playerDir.y < 0) OnTrigger?.Invoke(Direction.DOWN);
-            else OnTrigger?.Invoke(Direction.UP);
+            if (playerDir.y < 0) OnTrigger?.Invoke(DirectionEnums.DOWN);
+            else OnTrigger?.Invoke(DirectionEnums.UP);
         }
     }
 }

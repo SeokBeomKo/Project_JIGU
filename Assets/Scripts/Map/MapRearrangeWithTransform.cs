@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
-}
-
 
 public class MapRearrangeWithTransform : MonoBehaviour
 {
@@ -55,20 +47,20 @@ public class MapRearrangeWithTransform : MonoBehaviour
     }
 
 
-    public void Move(Direction direction)
+    public void Move(DirectionEnums direction)
     {
         switch (direction)
         {
-            case Direction.RIGHT:
+            case DirectionEnums.RIGHT:
                 MoveHorizontal(1);
                 break;
-            case Direction.LEFT:
+            case DirectionEnums.LEFT:
                 MoveHorizontal(-1);
                 break;
-            case Direction.UP:
+            case DirectionEnums.UP:
                 MoveVertical(-1);
                 break;
-            case Direction.DOWN:
+            case DirectionEnums.DOWN:
                 MoveVertical(1);
                 break;
         }
@@ -123,26 +115,5 @@ public class MapRearrangeWithTransform : MonoBehaviour
         }
     }
 
-
-    // 테스트를 위한 간단한 입력 처리
-/*    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Move(Direction.UP);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Move(Direction.DOWN);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Move(Direction.LEFT);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Move(Direction.RIGHT);
-        }
-    }*/
 
 }
