@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Area
   - Enemy
+  - Map
   layers:
   - Default
   - TransparentFX

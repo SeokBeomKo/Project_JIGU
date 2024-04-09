@@ -40,12 +40,12 @@ public class Reposition : MonoBehaviour
                     transform.Translate(Vector3.up * dirY * 100);
                 }
                 break;
-            case "Enemy":
+/*            case "Enemy":
                 if(coll.enabled)
                 {
                     transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)) ; //50 : ¸Ê Å©±â ¸¸Å­
                 }
-                break;
+                break;*/
         }
     }
 }

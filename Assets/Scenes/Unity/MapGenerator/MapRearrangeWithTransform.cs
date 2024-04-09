@@ -14,10 +14,16 @@ public enum Direction
 public class MapRearrangeWithTransform : MonoBehaviour
 {
     public Transform[] tiles = new Transform[9];
+    public BoundaryTrigger[] triggerArray = new BoundaryTrigger[9];
+
+    public Vector3 middleTilePosition;
+
+
     private Vector3[,] positions = new Vector3[3, 3]; 
     private int mapSize = 30; // 맵 하나의 크기 30 X 30
 
-    private void Start()
+
+    private void Awake()
     {
         int index = 0;
         for (int i = 0; i < 3; i++) // y 축
@@ -30,7 +36,24 @@ public class MapRearrangeWithTransform : MonoBehaviour
                 index++;
             }
         }
+
+        for(int i = 0; i < tiles.Length; i++)
+        {
+            if(i == 4) 
+                tiles[i].GetComponentInChildren<Collider2D>().enabled = true; 
+            else
+                tiles[i].GetComponentInChildren<Collider2D>().enabled = false;
+        }
     }
+
+    private void Start()
+    {
+        for (int i = 0; i < triggerArray.Length; i++)
+        {
+            triggerArray[i].OnTrigger += Move;
+        }
+    }
+
 
     public void Move(Direction direction)
     {
@@ -55,6 +78,8 @@ public class MapRearrangeWithTransform : MonoBehaviour
 
     private void MoveHorizontal(int step) // 수평 방향
     {
+        middleTilePosition.x += step;
+
         Vector3[,] newPositions = new Vector3[3, 3];
         for (int i = 0; i < 3; i++)
         {
@@ -69,6 +94,8 @@ public class MapRearrangeWithTransform : MonoBehaviour
 
     private void MoveVertical(int step) // 수직 방향
     {
+        middleTilePosition.y -= step;
+
         Vector3[,] newPositions = new Vector3[3, 3];
         for (int i = 0; i < 3; i++)
         {
@@ -88,14 +115,17 @@ public class MapRearrangeWithTransform : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
+                tiles[index].GetComponentInChildren<Collider2D>().enabled = middleTilePosition * mapSize == positions[i, j];
                 tiles[index].position = positions[i, j];
+
                 index++;
             }
         }
     }
 
+
     // 테스트를 위한 간단한 입력 처리
-    private void Update()
+/*    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -113,5 +143,6 @@ public class MapRearrangeWithTransform : MonoBehaviour
         {
             Move(Direction.RIGHT);
         }
-    }
+    }*/
+
 }
