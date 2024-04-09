@@ -9,17 +9,19 @@ public class InputCenter : MonoBehaviour
 
     private void Awake() 
     {
+        handler.onIdleInput += Idle;
         handler.onMoveInput += Move;
+    }
+
+    public void Idle(Vector2 dir)
+    {
+        controller.movementFSM.ChangeState(PlayerMovementStateEnums.IDLE);
     }
 
     public void Move(Vector2 dir)
     {
-        Debug.Log(dir);
         controller.moveDirection = dir;
 
-        if (dir == Vector2.zero)
-            controller.movementFSM.ChangeState(PlayerMovementStateEnums.IDLE);
-        else
-            controller.movementFSM.ChangeState(PlayerMovementStateEnums.MOVE);
+        controller.movementFSM.ChangeState(PlayerMovementStateEnums.MOVE);
     }
 }
