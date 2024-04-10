@@ -65864,8 +65864,10 @@ GameObject:
   - component: {fileID: 1371055438}
   - component: {fileID: 1371055437}
   - component: {fileID: 1371055435}
-  - component: {fileID: 1371055436}
   - component: {fileID: 1371055441}
+  - component: {fileID: 1371055444}
+  - component: {fileID: 1371055443}
+  - component: {fileID: 1371055442}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -65894,20 +65896,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1371055436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371055433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb19d75d5d3e1e4393e1e3461de27c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  target: {fileID: 357342530}
 --- !u!70 &1371055437
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -66051,6 +66039,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCollider: {fileID: 1371055437}
   player: {fileID: 357342528}
+--- !u!114 &1371055442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371055433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dcff726743fe24189988f9f22c3ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1371055443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371055433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4856b08c1ff7062418ee849343b9317c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1371055444}
+  chaseSpeed: 5
+--- !u!114 &1371055444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371055433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baedfc5946470d4c907c1d76e7d2ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 1371055438}
+  animator: {fileID: 1371055435}
+  spriteRenderer: {fileID: 1371055439}
+  enemyType: {fileID: 1371055443}
+  movementFSM: {fileID: 1371055442}
+  target: {fileID: 357342530}
 --- !u!1 &1464964622
 GameObject:
   m_ObjectHideFlags: 0
@@ -66072,7 +66104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1464964623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66314,7 +66346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6694044126d4264f8a5f1aed73e6357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
+  tileArray:
   - {fileID: 602109390}
   - {fileID: 2117935213}
   - {fileID: 1757046041}
@@ -66425,7 +66457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1742316710
 MonoBehaviour:
   m_ObjectHideFlags: 0

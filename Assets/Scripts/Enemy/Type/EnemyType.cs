@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class EnemyType : MonoBehaviour
 {
+    public EnemyController controller;
+
     // 추격
     public abstract void ChaseEnter();
     public abstract void ChaseUpdate();
@@ -18,9 +20,9 @@ public abstract class EnemyType : MonoBehaviour
 
     // 경직
     public abstract void StiffenEnter();
-    public abstract void StiffenChaseUpdate();
-    public abstract void StiffenChaseFixedUpdate();
-    public abstract void StiffenChaseExit();
+    public abstract void StiffenUpdate();
+    public abstract void StiffenFixedUpdate();
+    public abstract void StiffenExit();
 
     // 죽음
     public abstract void DeadEnter();

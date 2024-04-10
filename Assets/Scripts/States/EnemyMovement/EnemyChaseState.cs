@@ -10,21 +10,21 @@ public class EnemyChaseState : EnemyState
 
     public override void Enter()
     {
-
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void FixedUpdate()
-    {
-
+        controller.enemyType.ChaseEnter();
     }
 
     public override void Update()
     {
+        controller.enemyType.ChaseUpdate();
+    }
 
+    public override void FixedUpdate()
+    {
+        controller.enemyType.ChaseFixedUpdate();
+    }
+
+    public override void Exit()
+    {
+        controller.enemyType.ChaseExit();
     }
 }

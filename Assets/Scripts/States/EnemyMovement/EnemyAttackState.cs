@@ -10,21 +10,21 @@ public class EnemyAttackState : EnemyState
 
     public override void Enter()
     {
-
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void FixedUpdate()
-    {
-
+        controller.enemyType.AttackEnter();
     }
 
     public override void Update()
     {
+        controller.enemyType.AttackUpdate();
+    }
 
+    public override void FixedUpdate()
+    {
+        controller.enemyType.AttackFixedUpdate();
+    }
+
+    public override void Exit()
+    {
+        controller.enemyType.AttackExit();
     }
 }

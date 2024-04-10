@@ -10,21 +10,21 @@ public class EnemyStiffenState : EnemyState
 
     public override void Enter()
     {
-
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void FixedUpdate()
-    {
-
+        controller.enemyType.StiffenEnter();
     }
 
     public override void Update()
     {
+        controller.enemyType.StiffenUpdate();
+    }
 
+    public override void FixedUpdate()
+    {
+        controller.enemyType.StiffenFixedUpdate();
+    }
+
+    public override void Exit()
+    {
+        controller.enemyType.StiffenExit();
     }
 }

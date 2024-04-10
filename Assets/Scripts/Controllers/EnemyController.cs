@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public Rigidbody2D rigid;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     public EnemyType enemyType;
     public EnemyMovementFSM movementFSM;
-    public GameObject target;
+    public Rigidbody2D target;
 
     private void Awake()
     {

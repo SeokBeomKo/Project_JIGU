@@ -10,21 +10,21 @@ public class EnemyDeadState : EnemyState
 
     public override void Enter()
     {
-
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void FixedUpdate()
-    {
-
+        controller.enemyType.DeadEnter();
     }
 
     public override void Update()
     {
+        controller.enemyType.DeadUpdate();
+    }
 
+    public override void FixedUpdate()
+    {
+        controller.enemyType.DeadFixedUpdate();
+    }
+
+    public override void Exit()
+    {
+        controller.enemyType.DeadExit();
     }
 }
