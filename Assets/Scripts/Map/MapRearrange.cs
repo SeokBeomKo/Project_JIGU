@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MapRearrangeWithTransform : MonoBehaviour
+public class MapRearrange : MonoBehaviour
 {
-    public Transform[] tiles = new Transform[9];
+    public Transform[] tileArray = new Transform[9];
     public BoundaryTrigger[] triggerArray = new BoundaryTrigger[9];
 
     public Vector3 middleTilePosition;
 
 
     private Vector3[,] positions = new Vector3[3, 3]; 
-    private int mapSize = 30; // 맵 하나의 크기 30 X 30
+    private const int mapSize = 30; // 맵 하나의 크기 30 X 30
 
 
     private void Awake()
@@ -24,25 +24,25 @@ public class MapRearrangeWithTransform : MonoBehaviour
             {
                 // positions 배열에 Unity 좌표계 매핑 없이 직접적인 위치 설정
                 positions[i, j] = new Vector3((j - 1) * mapSize, -(i - 1) * mapSize, 0); // x, y 위치를 30 단위로 조정
-                tiles[index].position = positions[i, j];
+                tileArray[index].position = positions[i, j];
                 index++;
             }
         }
 
-        for(int i = 0; i < tiles.Length; i++)
+        for(int i = 0; i < tileArray.Length; i++)
         {
-            if(i == 4) 
-                tiles[i].GetComponentInChildren<Collider2D>().enabled = true; 
+            if(i == 4)
+                tileArray[i].GetComponentInChildren<Collider2D>().enabled = true; 
             else
-                tiles[i].GetComponentInChildren<Collider2D>().enabled = false;
+                tileArray[i].GetComponentInChildren<Collider2D>().enabled = false;
         }
     }
 
     private void Start()
     {
-        for (int i = 0; i < triggerArray.Length; i++)
+        foreach (var trigger in triggerArray)
         {
-            triggerArray[i].OnTrigger += Move;
+            trigger.OnTrigger += Move;
         }
     }
 
@@ -70,9 +70,10 @@ public class MapRearrangeWithTransform : MonoBehaviour
 
     private void MoveHorizontal(int step) // 수평 방향
     {
-        middleTilePosition.x += step;
-
         Vector3[,] newPositions = new Vector3[3, 3];
+        
+        middleTilePosition.x += step * mapSize;
+        
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -86,9 +87,10 @@ public class MapRearrangeWithTransform : MonoBehaviour
 
     private void MoveVertical(int step) // 수직 방향
     {
-        middleTilePosition.y -= step;
-
         Vector3[,] newPositions = new Vector3[3, 3];
+
+        middleTilePosition.y -= step * mapSize;
+
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -107,8 +109,9 @@ public class MapRearrangeWithTransform : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                tiles[index].GetComponentInChildren<Collider2D>().enabled = middleTilePosition * mapSize == positions[i, j];
-                tiles[index].position = positions[i, j];
+                bool isMiddleTile = middleTilePosition == positions[i, j];
+                tileArray[index].GetComponentInChildren<Collider2D>().enabled = isMiddleTile;
+                tileArray[index].position = positions[i, j];
 
                 index++;
             }

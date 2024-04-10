@@ -9,13 +9,11 @@ public class EnemyReposition : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Area")) return;
+        if (!collision.CompareTag("Area") || !enemyCollider.enabled) return;
 
         Vector3 playerDir = player.inputVec;
 
-        if (enemyCollider.enabled)
-        {
-            transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)); 
-        }
+        transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)); 
+
     }
 }

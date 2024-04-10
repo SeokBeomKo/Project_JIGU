@@ -9,29 +9,29 @@ public class BoundaryTrigger : MonoBehaviour
     public delegate void TriggerHandler(DirectionEnums direction);
     public event TriggerHandler OnTrigger;
 
-    private Collider2D Collider;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
 
-        Vector3 playerPos = player.transform.position;
-        Vector3 myPos = transform.position;
+        Vector3 playerPosition = player.transform.position;
+        Vector3 myPosition = transform.position;
 
-        float diffX = Mathf.Abs(playerPos.x - myPos.x);
-        float diffY = Mathf.Abs(playerPos.y - myPos.y);
+        float distanceX = Mathf.Abs(playerPosition.x - myPosition.x);
+        float distanceY = Mathf.Abs(playerPosition.y - myPosition.y);
 
-        Vector3 playerDir = player.inputVec;
+        Vector3 playerDirection = player.inputVec;
+        DirectionEnums direction;
 
-        if (diffX > diffY)
+        if (distanceX > distanceY)
         {
-            if (playerDir.x < 0) OnTrigger?.Invoke(DirectionEnums.LEFT);
-            else OnTrigger?.Invoke(DirectionEnums.RIGHT);
+            direction = playerDirection.x < 0 ? DirectionEnums.LEFT : DirectionEnums.RIGHT;
         }
         else
         {
-            if (playerDir.y < 0) OnTrigger?.Invoke(DirectionEnums.DOWN);
-            else OnTrigger?.Invoke(DirectionEnums.UP);
+            direction = playerDirection.y < 0 ? DirectionEnums.DOWN : DirectionEnums.UP;
         }
+
+        OnTrigger?.Invoke(direction);
     }
 }

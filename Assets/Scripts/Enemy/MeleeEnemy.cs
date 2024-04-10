@@ -20,8 +20,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isLive)
-            return;
+        if (!isLive) return;
 
         Vector2 directionVector = target.position - rigid.position; // πÊ«‚
         Vector2 nextVector = directionVector.normalized * speed * Time.fixedDeltaTime;
@@ -32,8 +31,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!isLive)
-            return;
+        if (!isLive) return;
 
         spriteRenderer.flipX = target.position.x < rigid.position.x;
     }
