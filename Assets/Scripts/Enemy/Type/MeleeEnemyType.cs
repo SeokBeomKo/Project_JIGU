@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeleeEnemyType : EnemyType
 {
-    bool isLive = true;
     public float chaseSpeed;
+    public float shootingRange;
 
     // 추격
     public override void ChaseEnter()
@@ -14,19 +14,18 @@ public class MeleeEnemyType : EnemyType
     }
     public override void ChaseUpdate()
     {
-        if (!isLive) return;
-
-        controller.spriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
+        FlipSprite();
     }
     public override void ChaseFixedUpdate()
     {
-        if (!isLive) return; // 나중에 콜라이더 꺼버리기
-
         Vector2 directionVector = controller.target.position - controller.rigid.position;
         Vector2 nextVector = directionVector.normalized * chaseSpeed * Time.fixedDeltaTime;
 
         controller.rigid.MovePosition(controller.rigid.position + nextVector);
         controller.rigid.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 속도 제거 
+
+        if (CalculateDistance() <= shootingRange)
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACK);
     }
     public override void ChaseExit()
     {
@@ -36,15 +35,16 @@ public class MeleeEnemyType : EnemyType
     // 공격
     public override void AttackEnter()
     {
-
+        controller.animator.Play("Attack");
     }
     public override void AttackUpdate()
     {
-
+        FlipSprite();
     }
     public override void AttackFixedUpdate()
     {
-
+        if (CalculateDistance() > shootingRange)
+            controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
     }
     public override void AttackExit()
     {

@@ -29,4 +29,16 @@ public abstract class EnemyType : MonoBehaviour
     public abstract void DeadUpdate();
     public abstract void DeadFixedUpdate();
     public abstract void DeadExit();
+
+    // 그 외 함수
+    public void FlipSprite()
+    {
+        controller.spriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
+    }
+
+    public float CalculateDistance()
+    {
+        float range = Vector2.Distance(controller.rigid.position, controller.target.position);
+        return range;
+    }
 }
