@@ -10,6 +10,7 @@ public class EnemyMovementFSMFactory : FSMFactory<EnemyMovementFSM, EnemyStateEn
       
         // 필요한 상태들을 여기서 추가 및 초기화
         fsm.AddState(EnemyStateEnums.CHASE, new EnemyChaseState(controller));
+        fsm.AddState(EnemyStateEnums.ATTACKPREPARATION, new EnemyAttackPreparationState(controller));
         fsm.AddState(EnemyStateEnums.ATTACK, new EnemyAttackState(controller));
         fsm.AddState(EnemyStateEnums.STIFFEN, new EnemyStiffenState(controller));
         fsm.AddState(EnemyStateEnums.DEAD, new EnemyDeadState(controller));

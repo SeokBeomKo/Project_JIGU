@@ -12,6 +12,12 @@ public abstract class EnemyType : MonoBehaviour
     public abstract void ChaseFixedUpdate();
     public abstract void ChaseExit();
 
+    // 공격 준비 
+    public abstract void AttackPreparationEnter();
+    public abstract void AttackPreparationUpdate();
+    public abstract void AttackPreparationFixedUpdate();
+    public abstract void AttackPreparationExit();
+
     // 공격
     public abstract void AttackEnter();
     public abstract void AttackUpdate();
@@ -34,6 +40,12 @@ public abstract class EnemyType : MonoBehaviour
     public void FlipSprite()
     {
         controller.spriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
+    }
+
+    public void FlipWeapon(GameObject weapon)
+    {
+        SpriteRenderer weaponSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
+        weaponSpriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
     }
 
     public float CalculateDistance()

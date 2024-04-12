@@ -32,6 +32,21 @@ public class MeleeEnemyType : EnemyType
 
     }
 
+    // 공격 준비
+    public override void AttackPreparationEnter()
+    {
+    }
+    public override void AttackPreparationUpdate()
+    {
+    }
+    public override void AttackPreparationFixedUpdate()
+    {
+    }
+    public override void AttackPreparationExit()
+    {
+
+    }
+
     // 공격
     public override void AttackEnter()
     {
