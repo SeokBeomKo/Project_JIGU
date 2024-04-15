@@ -7,20 +7,27 @@ public class RangedEnemyType : EnemyType
     [Header("몬스터 이동 속도")]
     public float chaseSpeed;
 
+    [Header("공격 준비 시간")]
+    public float attackDelayTime;
+
     [Header("사정 거리")]
     public float shootingRange;
 
     [Header("무기")]
     public GameObject weaponBow;
     public Animator weaponAnimator;
+    public Vector2 directionToTarget;
 
-    /*[Header("활")]
-    public GameObject arrow;*/
+    [Header("활")]
+    public GameObject arrowPrefab;
+    public Transform shootingPoint;
+    public EnemyProjectile projectile;
 
     // 추격
     public override void ChaseEnter()
     {
         controller.animator.Play("Chase");
+        weaponBow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
     public override void ChaseUpdate()
     {
@@ -47,8 +54,9 @@ public class RangedEnemyType : EnemyType
     // 공격 준비
     public override void AttackPreparationEnter()
     {
-        // weaponAnimator.Play("BowAttack");
         FlipWeapon(weaponBow, false);
+        StartCoroutine(AttackDelay(attackDelayTime, EnemyStateEnums.ATTACK));
+        controller.animator.Play("Attack");
     }
     public override void AttackPreparationUpdate()
     {
@@ -57,34 +65,46 @@ public class RangedEnemyType : EnemyType
     public override void AttackPreparationFixedUpdate()
     {
         Vector2 currentPos = weaponBow.transform.position;
-        Vector2 directionToTarget = controller.target.position - currentPos;
+        directionToTarget = controller.target.position - currentPos;
 
-        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-        weaponBow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        float weaponAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        weaponBow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, weaponAngle));
     }
     public override void AttackPreparationExit()
     {
-
+        projectile.SetDirection(directionToTarget);
+        projectile.SetAngle(weaponBow.transform.rotation);
     }
 
     // 공격
     public override void AttackEnter()
     {
-        controller.animator.Play("Attack");
+        weaponAnimator.Play("BowAttack");
+        GameObject arrow = Instantiate<GameObject>(arrowPrefab);
+        arrow.transform.position = shootingPoint.position;
+        
     }
     public override void AttackUpdate()
     {
         FlipSprite();
-        FlipWeapon(weaponBow);
+
+        if (weaponAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99f) return;
+        
+        if (CalculateDistance() > shootingRange)
+        {
+            controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
+        }
+        else
+        {
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);
+        }
     }
     public override void AttackFixedUpdate()
     {
-        if (CalculateDistance() > shootingRange)
-            controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
     }
     public override void AttackExit()
     {
-
+        weaponAnimator.Play("BowIdle");
     }
 
     // 경직

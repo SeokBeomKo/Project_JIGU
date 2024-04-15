@@ -53,4 +53,11 @@ public abstract class EnemyType : MonoBehaviour
         float range = Vector2.Distance(controller.rigid.position, controller.target.position);
         return range;
     }
+
+    public IEnumerator AttackDelay(float second, EnemyStateEnums state)
+    {
+        yield return new WaitForSeconds(second);
+        // Debug.Log(second + "ÃÊ Áö³²");
+        controller.movementFSM.ChangeState(state);
+    }
 }
