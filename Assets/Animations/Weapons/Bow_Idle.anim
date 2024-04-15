@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RangedEnemy_Attack
+  m_Name: Bow_Idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -362280675, guid: 7b769d142e883864b89ff96b844343de, type: 3}
-    - time: 0.9166667
-      value: {fileID: -362280675, guid: 7b769d142e883864b89ff96b844343de, type: 3}
+      value: {fileID: 21300000, guid: 1e31b8ae042490c40b2c6ab8bce280ae, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 1e31b8ae042490c40b2c6ab8bce280ae, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 12
+  m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -46,14 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -362280675, guid: 7b769d142e883864b89ff96b844343de, type: 3}
-    - {fileID: -362280675, guid: 7b769d142e883864b89ff96b844343de, type: 3}
+    - {fileID: 21300000, guid: 1e31b8ae042490c40b2c6ab8bce280ae, type: 3}
+    - {fileID: 21300000, guid: 1e31b8ae042490c40b2c6ab8bce280ae, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -12,9 +12,10 @@ public class RangedEnemyType : EnemyType
 
     [Header("무기")]
     public GameObject weaponBow;
+    public Animator weaponAnimator;
 
-    [Header("활")]
-    public GameObject arrow;
+    /*[Header("활")]
+    public GameObject arrow;*/
 
     // 추격
     public override void ChaseEnter()
@@ -26,7 +27,6 @@ public class RangedEnemyType : EnemyType
         FlipSprite();
         FlipWeapon(weaponBow);
     }
-
     public override void ChaseFixedUpdate()
     {
         Vector2 directionVector = controller.target.position - controller.rigid.position;
@@ -36,8 +36,9 @@ public class RangedEnemyType : EnemyType
         controller.rigid.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 속도 제거 
 
         if (CalculateDistance() <= shootingRange)
-            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACK);
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);
     }
+
     public override void ChaseExit()
     {
 
@@ -46,12 +47,20 @@ public class RangedEnemyType : EnemyType
     // 공격 준비
     public override void AttackPreparationEnter()
     {
+        // weaponAnimator.Play("BowAttack");
+        FlipWeapon(weaponBow, false);
     }
     public override void AttackPreparationUpdate()
     {
+        FlipSprite();
     }
     public override void AttackPreparationFixedUpdate()
     {
+        Vector2 currentPos = weaponBow.transform.position;
+        Vector2 directionToTarget = controller.target.position - currentPos;
+
+        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        weaponBow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     public override void AttackPreparationExit()
     {

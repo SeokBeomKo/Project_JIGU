@@ -42,10 +42,10 @@ public abstract class EnemyType : MonoBehaviour
         controller.spriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
     }
 
-    public void FlipWeapon(GameObject weapon)
+    public void FlipWeapon(GameObject weapon, bool isflip = true)
     {
         SpriteRenderer weaponSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
-        weaponSpriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
+        weaponSpriteRenderer.flipX = controller.spriteRenderer.flipX && isflip;
     }
 
     public float CalculateDistance()
