@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyType : EnemyType
+public class RangedAreaEnemyType : EnemyType
 {
     [Header("이동 속도")]
     public float chaseSpeed;
@@ -10,8 +10,15 @@ public class MeleeEnemyType : EnemyType
     [Header("사정 거리")]
     public float shootingRange;
 
-    /*[Header("공격 준비 시간")]
-    public float attackDelayTime;*/
+    [Header("공격 준비 시간")]
+    public float attackDelayTime;
+
+    [Header("경고 박스")]
+    public GameObject warningBox;
+    private GameObject box;
+
+    [Header("폭발")]
+    public GameObject explosion;
 
     // 추격
     public override void ChaseEnter()
@@ -28,10 +35,10 @@ public class MeleeEnemyType : EnemyType
         Vector2 nextVector = directionVector.normalized * chaseSpeed * Time.fixedDeltaTime;
 
         controller.rigid.MovePosition(controller.rigid.position + nextVector);
-        controller.rigid.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 속도 제거 
+        controller.rigid.velocity = Vector2.zero;
 
         if (CalculateDistance() <= shootingRange)
-            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACK);
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);
     }
     public override void ChaseExit()
     {
@@ -41,22 +48,30 @@ public class MeleeEnemyType : EnemyType
     // 공격 준비
     public override void AttackPreparationEnter()
     {
+        controller.animator.Play("Attack");
+
+        box = Instantiate<GameObject>(warningBox);
+        box.transform.position = controller.target.position;
+ 
+        StartCoroutine(AttackDelay(attackDelayTime, EnemyStateEnums.ATTACK));
     }
     public override void AttackPreparationUpdate()
     {
+        FlipSprite();
     }
     public override void AttackPreparationFixedUpdate()
     {
     }
     public override void AttackPreparationExit()
     {
-
+        Destroy(box);
     }
 
     // 공격
     public override void AttackEnter()
     {
-        controller.animator.Play("Attack");
+        GameObject fire = Instantiate<GameObject>(explosion);
+        fire.transform.position = box.transform.position;
     }
     public override void AttackUpdate()
     {
@@ -65,7 +80,13 @@ public class MeleeEnemyType : EnemyType
     public override void AttackFixedUpdate()
     {
         if (CalculateDistance() > shootingRange)
+        {
             controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
+        }
+        else
+        {
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);
+        }
     }
     public override void AttackExit()
     {

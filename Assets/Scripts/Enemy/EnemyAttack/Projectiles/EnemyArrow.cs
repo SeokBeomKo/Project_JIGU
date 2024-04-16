@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyArrow : EnemyProjectile
 {
     [Header("발사체 속도")]
     public float projectileSpeed;
@@ -21,7 +21,6 @@ public class EnemyProjectile : MonoBehaviour
         transform.rotation = projectileAngle;
         StartCoroutine(RemoveProjectile(removeTime));
     }
-
     private void FixedUpdate()
     {
         transform.position += (Vector3)projectileDirection.normalized * projectileSpeed * Time.fixedDeltaTime;
@@ -35,11 +34,5 @@ public class EnemyProjectile : MonoBehaviour
     public void SetDirection(Vector2 direction)
     {
         projectileDirection = direction;
-    }
-    
-    public IEnumerator RemoveProjectile(float time)
-    {
-        yield return new WaitForSeconds(time);
-        Destroy(this.gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangedEnemyType : EnemyType
 {
-    [Header("몬스터 이동 속도")]
+    [Header("이동 속도")]
     public float chaseSpeed;
 
     [Header("공격 준비 시간")]
@@ -21,7 +21,7 @@ public class RangedEnemyType : EnemyType
     [Header("활")]
     public GameObject arrowPrefab;
     public Transform shootingPoint;
-    public EnemyProjectile projectile;
+    public EnemyArrow projectile;
 
     // 추격
     public override void ChaseEnter()
