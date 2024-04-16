@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reposition : MonoBehaviour
+public class RepositionTest : MonoBehaviour
 {
     public PlayerTest player;
     Collider2D coll;

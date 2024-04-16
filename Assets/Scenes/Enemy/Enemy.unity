@@ -9354,10 +9354,9 @@ GameObject:
   - component: {fileID: 63856222}
   - component: {fileID: 63856225}
   - component: {fileID: 63856224}
-  - component: {fileID: 63856227}
   m_Layer: 0
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9553,20 +9552,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &63856227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63856218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019a376ab4ae5a54ea167044085326a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCollider: {fileID: 63856223}
-  player: {fileID: 357342528}
 --- !u!1 &133698923
 GameObject:
   m_ObjectHideFlags: 0
@@ -28014,7 +27999,6 @@ GameObject:
   - component: {fileID: 270548033}
   - component: {fileID: 270548036}
   - component: {fileID: 270548037}
-  - component: {fileID: 270548038}
   m_Layer: 0
   m_Name: RangedAreaEnemy
   m_TagString: Enemy
@@ -28145,7 +28129,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.08}
@@ -28208,20 +28192,6 @@ MonoBehaviour:
   attackDelayTime: 2
   warningBox: {fileID: 6525915814157921165, guid: e5999453108f0c041a5d1d8e2694d114, type: 3}
   explosion: {fileID: 7745319690497424934, guid: 65adef84757a84945b932cdc4d3098ca, type: 3}
---- !u!114 &270548038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270548030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019a376ab4ae5a54ea167044085326a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCollider: {fileID: 270548034}
-  player: {fileID: 357342528}
 --- !u!1 &357342527
 GameObject:
   m_ObjectHideFlags: 0
@@ -66294,7 +66264,6 @@ GameObject:
   - component: {fileID: 1371055438}
   - component: {fileID: 1371055444}
   - component: {fileID: 1371055443}
-  - component: {fileID: 1371055441}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -66452,20 +66421,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2003952706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1371055441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371055433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019a376ab4ae5a54ea167044085326a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCollider: {fileID: 1371055437}
-  player: {fileID: 357342528}
 --- !u!114 &1371055443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75911,6 +75866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881310053}
   - component: {fileID: 1881310054}
+  - component: {fileID: 1881310055}
   m_Layer: 0
   m_Name: Area
   m_TagString: Area
@@ -75978,6 +75934,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30, y: 30}
   m_EdgeRadius: 0
+--- !u!114 &1881310055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881310052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcd49d30627ae64b98708921fae0be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 357342528}
 --- !u!1 &2003952705
 GameObject:
   m_ObjectHideFlags: 0
