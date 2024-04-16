@@ -31,11 +31,7 @@ public class RangedAreaEnemyType : EnemyType
     }
     public override void ChaseFixedUpdate()
     {
-        Vector2 directionVector = controller.target.position - controller.rigid.position;
-        Vector2 nextVector = directionVector.normalized * chaseSpeed * Time.fixedDeltaTime;
-
-        controller.rigid.MovePosition(controller.rigid.position + nextVector);
-        controller.rigid.velocity = Vector2.zero;
+        ChaseTarget(chaseSpeed);
 
         if (CalculateDistance() <= shootingRange)
             controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);

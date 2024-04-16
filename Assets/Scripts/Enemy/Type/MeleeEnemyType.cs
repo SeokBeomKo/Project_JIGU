@@ -24,11 +24,7 @@ public class MeleeEnemyType : EnemyType
     }
     public override void ChaseFixedUpdate()
     {
-        Vector2 directionVector = controller.target.position - controller.rigid.position;
-        Vector2 nextVector = directionVector.normalized * chaseSpeed * Time.fixedDeltaTime;
-
-        controller.rigid.MovePosition(controller.rigid.position + nextVector);
-        controller.rigid.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 속도 제거 
+        ChaseTarget(chaseSpeed);
 
         if (CalculateDistance() <= shootingRange)
             controller.movementFSM.ChangeState(EnemyStateEnums.ATTACK);
