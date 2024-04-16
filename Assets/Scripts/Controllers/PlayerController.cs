@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
 
 
-    private float moveSpeed = 5f;
+    public float moveSpeed = 10f;
 
     private void Awake() 
     {
