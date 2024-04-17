@@ -6,37 +6,37 @@ public abstract class EnemyType : MonoBehaviour
 {
     public EnemyController controller;
 
-    // Ãß°İ
+    // ì¶”ê²©
     public abstract void ChaseEnter();
     public abstract void ChaseUpdate();
     public abstract void ChaseFixedUpdate();
     public abstract void ChaseExit();
 
-    // °ø°İ ÁØºñ 
+    // ê³µê²© ì¤€ë¹„ 
     public abstract void AttackPreparationEnter();
     public abstract void AttackPreparationUpdate();
     public abstract void AttackPreparationFixedUpdate();
     public abstract void AttackPreparationExit();
 
-    // °ø°İ
+    // ê³µê²©
     public abstract void AttackEnter();
     public abstract void AttackUpdate();
     public abstract void AttackFixedUpdate();
     public abstract void AttackExit();
 
-    // °æÁ÷
+    // ê²½ì§
     public abstract void StiffenEnter();
     public abstract void StiffenUpdate();
     public abstract void StiffenFixedUpdate();
     public abstract void StiffenExit();
 
-    // Á×À½
+    // ì£½ìŒ
     public abstract void DeadEnter();
     public abstract void DeadUpdate();
     public abstract void DeadFixedUpdate();
     public abstract void DeadExit();
 
-    // ±× ¿Ü ÇÔ¼ö
+    // ê·¸ ì™¸ í•¨ìˆ˜
     public void FlipSprite()
     {
         controller.spriteRenderer.flipX = controller.target.position.x < controller.rigid.position.x;
@@ -57,7 +57,7 @@ public abstract class EnemyType : MonoBehaviour
     public IEnumerator AttackDelay(float second, EnemyStateEnums state)
     {
         yield return new WaitForSeconds(second);
-        // Debug.Log(second + "ÃÊ Áö³²");
+        // Debug.Log(second + "ì´ˆ ì§€ë‚¨");
         controller.movementFSM.ChangeState(state);
     }
 
@@ -67,7 +67,7 @@ public abstract class EnemyType : MonoBehaviour
         Vector2 nextVector = directionVector.normalized * chaseSpeed * Time.fixedDeltaTime;
 
         controller.rigid.MovePosition(controller.rigid.position + nextVector);
-        controller.rigid.velocity = Vector2.zero;  // ¹°¸® ¼Óµµ°¡ ÀÌµ¿¿¡ ¿µÇâÀ» ÁÖÁö ¾Êµµ·Ï ¼Óµµ Á¦°Å 
+        controller.rigid.velocity = Vector2.zero;  // ë¬¼ë¦¬ ì†ë„ê°€ ì´ë™ì— ì˜í–¥ì„ ì£¼ì§€ ì•Šë„ë¡ ì†ë„ ì œê±° 
     }
 
 }

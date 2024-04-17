@@ -22,7 +22,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (!isLive) return;
 
-        Vector2 directionVector = target.position - rigid.position; // πÊ«‚
+        Vector2 directionVector = target.position - rigid.position; // Î∞©Ìñ•
         Vector2 nextVector = directionVector.normalized * speed * Time.fixedDeltaTime;
 
         rigid.MovePosition(rigid.position + nextVector);

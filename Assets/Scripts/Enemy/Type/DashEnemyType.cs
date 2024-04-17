@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class DashEnemyType : EnemyType
 {
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ì´ë™ ì†ë„")]
     public float chaseSpeed;
 
-    [Header("»çÁ¤ °Å¸®")]
+    [Header("ì‚¬ì • ê±°ë¦¬")]
     public float shootingRange;
 
-    /*[Header("°ø°İ ÁØºñ ½Ã°£")]
-    public float attackDelayTime;*/
+    [Header("ê³µê²© ì¤€ë¹„ ì‹œê°„")]
+    public float attackDelayTime;
 
-    // Ãß°İ
+    [Header("ëŒì§„ ì†ë„")]
+    public float dashSpeed;
+    private Vector2 dashDirection;
+
+    // ì¶”ê²©
     public override void ChaseEnter()
     {
         controller.animator.Play("Chase");
@@ -34,41 +38,54 @@ public class DashEnemyType : EnemyType
 
     }
 
-    // °ø°İ ÁØºñ
+    // ê³µê²© ì¤€ë¹„
     public override void AttackPreparationEnter()
     {
         controller.animator.Play("AttackPreparation");
+        StartCoroutine(AttackDelay(attackDelayTime, EnemyStateEnums.ATTACK));
     }
     public override void AttackPreparationUpdate()
     {
     }
     public override void AttackPreparationFixedUpdate()
     {
+        
     }
     public override void AttackPreparationExit()
     {
-
+        dashDirection = controller.target.position - controller.rigid.position;
     }
 
-    // °ø°İ
+    // ê³µê²©
     public override void AttackEnter()
     {
         controller.animator.Play("Dash");
     }
     public override void AttackUpdate()
     {
+        controller.rigid.velocity = dashDirection.normalized * dashSpeed;
     }
     public override void AttackFixedUpdate()
     {
+        FlipSprite();
+
+        if(controller.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99f) return;
+
         if (CalculateDistance() > shootingRange)
+        {
             controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
+        }
+        else
+        {
+            controller.movementFSM.ChangeState(EnemyStateEnums.ATTACKPREPARATION);
+        }
     }
     public override void AttackExit()
     {
-
+        controller.rigid.velocity = Vector2.zero;
     }
 
-    // °æÁ÷
+    // ê²½ì§
     public override void StiffenEnter()
     {
 
@@ -86,7 +103,7 @@ public class DashEnemyType : EnemyType
 
     }
 
-    // Á×À½
+    // ì£½ìŒ
     public override void DeadEnter()
     {
 

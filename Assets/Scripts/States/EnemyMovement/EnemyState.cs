@@ -7,7 +7,7 @@ public abstract class EnemyState : IState
     protected EnemyController controller;
     protected EnemyMovementFSM stateMachine;
 
-    public EnemyState(EnemyController controller)  // »ı¼ºÀÚ : ½ºÅ©¸³Æ®°¡ »ı¼ºµÉ ¶§ ÀÚµ¿ È£Ãâ
+    public EnemyState(EnemyController controller)  // ìƒì„±ì : ìŠ¤í¬ë¦½íŠ¸ê°€ ìƒì„±ë  ë•Œ ìë™ í˜¸ì¶œ
     {
         this.controller = controller;
         this.stateMachine = controller.movementFSM;

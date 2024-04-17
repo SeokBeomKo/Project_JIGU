@@ -56879,7 +56879,7 @@ GameObject:
   - component: {fileID: 1115126719}
   - component: {fileID: 1115126718}
   - component: {fileID: 1115126717}
-  - component: {fileID: 1115126716}
+  - component: {fileID: 1115126722}
   m_Layer: 0
   m_Name: DashEnemy
   m_TagString: Enemy
@@ -56902,21 +56902,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2003952706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1115126716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115126714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d327bf61b34c841ae3594d8b5845e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1115126717}
-  chaseSpeed: 3
-  shootingRange: 3
 --- !u!114 &1115126717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56932,7 +56917,7 @@ MonoBehaviour:
   rigid: {fileID: 1115126718}
   animator: {fileID: 1115126720}
   spriteRenderer: {fileID: 1115126721}
-  enemyType: {fileID: 1115126716}
+  enemyType: {fileID: 1115126722}
   movementFSM: {fileID: 0}
   target: {fileID: 357342530}
 --- !u!50 &1115126718
@@ -57070,6 +57055,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1115126722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115126714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d327bf61b34c841ae3594d8b5845e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1115126717}
+  chaseSpeed: 2
+  shootingRange: 3
+  attackDelayTime: 1.5
+  dashSpeed: 4
 --- !u!1 &1158944790
 GameObject:
   m_ObjectHideFlags: 0

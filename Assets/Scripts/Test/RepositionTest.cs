@@ -26,7 +26,7 @@ public class RepositionTest : MonoBehaviour
         Vector3 playerDir = player.inputVec;
 
         float dirX = playerDir.x < 0 ? -1 : 1;
-        float dirY = playerDir.y < 0 ? -1 : 1; // normalized ¾È ÇßÀ¸¸é ±»ÀÌ ¾È ÇØµµ µÊ
+        float dirY = playerDir.y < 0 ? -1 : 1; // normalized í–ˆìœ¼ë©´ êµ³ì´ ì•ˆ í•´ë„ ë¨
 
         switch (transform.tag)
         {
@@ -43,7 +43,7 @@ public class RepositionTest : MonoBehaviour
 /*            case "Enemy":
                 if(coll.enabled)
                 {
-                    transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)) ; //50 : ¸Ê Å©±â ¸¸Å­
+                    transform.Translate(playerDir * 30 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)) ; //50 : ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½Å­
                 }
                 break;*/
         }

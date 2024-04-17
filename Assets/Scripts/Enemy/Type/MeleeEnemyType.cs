@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class MeleeEnemyType : EnemyType
 {
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ì´ë™ ì†ë„")]
     public float chaseSpeed;
 
-    [Header("»çÁ¤ °Å¸®")]
+    [Header("ì‚¬ì • ê±°ë¦¬")]
     public float shootingRange;
 
-    /*[Header("°ø°İ ÁØºñ ½Ã°£")]
+    /*[Header("ê³µê²© ì¤€ë¹„ ì‹œê°„")]
     public float attackDelayTime;*/
 
-    // Ãß°İ
+    // ì¶”ê²©
     public override void ChaseEnter()
     {
         controller.animator.Play("Chase");
@@ -34,7 +34,7 @@ public class MeleeEnemyType : EnemyType
 
     }
 
-    // °ø°İ ÁØºñ
+    // ê³µê²© ì¤€ë¹„
     public override void AttackPreparationEnter()
     {
     }
@@ -49,7 +49,7 @@ public class MeleeEnemyType : EnemyType
 
     }
 
-    // °ø°İ
+    // ê³µê²©
     public override void AttackEnter()
     {
         controller.animator.Play("Attack");
@@ -68,7 +68,7 @@ public class MeleeEnemyType : EnemyType
 
     }
 
-    // °æÁ÷
+    // ê²½ì§
     public override void StiffenEnter()
     {
 
@@ -86,7 +86,7 @@ public class MeleeEnemyType : EnemyType
 
     }
 
-    // Á×À½
+    // ì£½ìŒ
     public override void DeadEnter()
     {
 

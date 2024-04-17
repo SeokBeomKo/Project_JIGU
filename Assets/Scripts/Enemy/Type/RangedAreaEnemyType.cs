@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class RangedAreaEnemyType : EnemyType
 {
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ì´ë™ ì†ë„")]
     public float chaseSpeed;
 
-    [Header("»çÁ¤ °Å¸®")]
+    [Header("ì‚¬ì • ê±°ë¦¬")]
     public float shootingRange;
 
-    [Header("°ø°İ ÁØºñ ½Ã°£")]
+    [Header("ê³µê²© ì¤€ë¹„ ì‹œê°„")]
     public float attackDelayTime;
 
-    [Header("°æ°í ¹Ú½º")]
+    [Header("ê²½ê³  ë°•ìŠ¤")]
     public GameObject warningBox;
     private GameObject box;
 
-    [Header("Æø¹ß")]
+    [Header("í­ë°œ")]
     public GameObject explosion;
 
-    // Ãß°İ
+    // ì¶”ê²©
     public override void ChaseEnter()
     {
         controller.animator.Play("Chase");
@@ -41,7 +41,7 @@ public class RangedAreaEnemyType : EnemyType
 
     }
 
-    // °ø°İ ÁØºñ
+    // ê³µê²© ì¤€ë¹„
     public override void AttackPreparationEnter()
     {
         controller.animator.Play("Attack");
@@ -63,7 +63,7 @@ public class RangedAreaEnemyType : EnemyType
         Destroy(box);
     }
 
-    // °ø°İ
+    // ê³µê²©
     public override void AttackEnter()
     {
         GameObject fire = Instantiate<GameObject>(explosion);
@@ -89,7 +89,7 @@ public class RangedAreaEnemyType : EnemyType
 
     }
 
-    // °æÁ÷
+    // ê²½ì§
     public override void StiffenEnter()
     {
 
@@ -107,7 +107,7 @@ public class RangedAreaEnemyType : EnemyType
 
     }
 
-    // Á×À½
+    // ì£½ìŒ
     public override void DeadEnter()
     {
 

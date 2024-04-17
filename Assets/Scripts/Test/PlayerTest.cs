@@ -31,7 +31,7 @@ public class PlayerTest : MonoBehaviour
 
     void LateUpdate()
     {
-        // inputVec.magnitude; //º¤ÅÍÀÇ ¼ø¼öÇÑ Å©±â °ª
+        // inputVec.magnitude; //ë²¡í„°ì˜ ìˆœìˆ˜í•œ í¬ê¸° ê°’
 
         if (inputVec.x != 0)
         {

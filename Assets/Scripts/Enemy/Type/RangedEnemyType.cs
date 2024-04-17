@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class RangedEnemyType : EnemyType
 {
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ì´ë™ ì†ë„")]
     public float chaseSpeed;
 
-    [Header("°ø°İ ÁØºñ ½Ã°£")]
+    [Header("ê³µê²© ì¤€ë¹„ ì‹œê°„")]
     public float attackDelayTime;
 
-    [Header("»çÁ¤ °Å¸®")]
+    [Header("ì‚¬ì • ê±°ë¦¬")]
     public float shootingRange;
 
-    [Header("¹«±â")]
+    [Header("ë¬´ê¸°")]
     public GameObject weaponBow;
     public Animator weaponAnimator;
     public Vector2 directionToTarget;
 
-    [Header("È°")]
+    [Header("í™œ")]
     public GameObject arrowPrefab;
     public Transform shootingPoint;
     public EnemyArrow projectile;
 
-    // Ãß°İ
+    // ì¶”ê²©
     public override void ChaseEnter()
     {
         controller.animator.Play("Chase");
@@ -47,7 +47,7 @@ public class RangedEnemyType : EnemyType
 
     }
 
-    // °ø°İ ÁØºñ
+    // ê³µê²© ì¤€ë¹„
     public override void AttackPreparationEnter()
     {
         FlipWeapon(weaponBow, false);
@@ -72,7 +72,7 @@ public class RangedEnemyType : EnemyType
         projectile.SetAngle(weaponBow.transform.rotation);
     }
 
-    // °ø°İ
+    // ê³µê²©
     public override void AttackEnter()
     {
         weaponAnimator.Play("BowAttack");
@@ -103,7 +103,7 @@ public class RangedEnemyType : EnemyType
         weaponAnimator.Play("BowIdle");
     }
 
-    // °æÁ÷
+    // ê²½ì§
     public override void StiffenEnter()
     {
 
@@ -121,7 +121,7 @@ public class RangedEnemyType : EnemyType
 
     }
 
-    // Á×À½
+    // ì£½ìŒ
     public override void DeadEnter()
     {
 

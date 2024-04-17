@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyArrow : EnemyProjectile
 {
-    [Header("¹ß»çÃ¼ ¼Óµµ")]
+    [Header("ë°œì‚¬ì²´ ì†ë„")]
     public float projectileSpeed;
 
-    [Header("¹ß»çÃ¼ »èÁ¦ ½Ã°£")]
+    [Header("ë°œì‚¬ì²´ ì‚­ì œ ì‹œê°„")]
     public float removeTime;
 
     [HideInInspector]

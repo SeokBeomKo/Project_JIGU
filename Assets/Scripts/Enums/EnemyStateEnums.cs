@@ -1,8 +1,8 @@
 public enum EnemyStateEnums
 { 
-    CHASE,              // юл╣© ╩Себ
-    ATTACKPREPARATION,  // ╟Ь╟щ аь╨Я ╩Себ
-    ATTACK,             // ╟Ь╟щ ╩Себ
-    STIFFEN,            // ╟ФаВ ╩Себ
-    DEAD                // ╩Г╦а ╩Себ
+    CHASE,              // Л²╢К▐≥ Л┐│М┐°
+    ATTACKPREPARATION,  // ЙЁ╣Й╡╘ Л╓─К╧└ Л┐│М┐°
+    ATTACK,             // ЙЁ╣Й╡╘ Л┐│М┐°
+    STIFFEN,            // Й╡╫Л╖│ Л┐│М┐°
+    DEAD                // Л┌╛К╖² Л┐│М┐°
 }
