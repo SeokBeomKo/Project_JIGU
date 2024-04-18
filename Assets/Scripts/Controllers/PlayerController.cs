@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public Rigidbody2D rigid;
     public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    public CharacterSpriteController spriteController;
     public PlayerMovementFSM movementFSM;
     public Vector2 moveDirection;
     public Vector2 targetPosition;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         Vector2 directionToTarget = targetPosition - currentPos;
         if (targetPosition == currentPos) directionToTarget = moveDirection;
 
-        spriteRenderer.flipX = directionToTarget.x < 0;
+        spriteController.Flip(directionToTarget.x < 0);
         // 타겟 방향 벡터와 Vector2.up 사이의 각도 계산
         float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
         // Quaternion을 사용하여 weapon 객체 회전 설정
