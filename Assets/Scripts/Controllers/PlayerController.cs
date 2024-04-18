@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
 
 
-    private float moveSpeed = 5f;
+    public float moveSpeed = 10f;
 
     private void Awake() 
     {
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPos = transform.position;
         // 타겟 방향 벡터 계산
         Vector2 directionToTarget = targetPosition - currentPos;
+        if (targetPosition == currentPos) directionToTarget = moveDirection;
 
         spriteRenderer.flipX = directionToTarget.x < 0;
         // 타겟 방향 벡터와 Vector2.up 사이의 각도 계산
