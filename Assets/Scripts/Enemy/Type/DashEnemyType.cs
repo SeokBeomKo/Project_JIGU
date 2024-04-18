@@ -16,6 +16,7 @@ public class DashEnemyType : EnemyType
     [Header("돌진 속도")]
     public float dashSpeed;
     private Vector2 dashDirection;
+    private Vector3 dashStartPosition;
 
     // 추격
     public override void ChaseEnter()
@@ -46,10 +47,10 @@ public class DashEnemyType : EnemyType
     }
     public override void AttackPreparationUpdate()
     {
+        FlipSprite();
     }
     public override void AttackPreparationFixedUpdate()
     {
-        
     }
     public override void AttackPreparationExit()
     {
@@ -60,6 +61,7 @@ public class DashEnemyType : EnemyType
     public override void AttackEnter()
     {
         controller.animator.Play("Dash");
+        dashStartPosition = controller.transform.position; // 대시 시작 위치 기록
     }
     public override void AttackUpdate()
     {
@@ -67,10 +69,10 @@ public class DashEnemyType : EnemyType
     }
     public override void AttackFixedUpdate()
     {
-        FlipSprite();
+        //FlipSprite();
 
-        if(controller.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99f) return;
-
+        if ((controller.transform.position - dashStartPosition).magnitude < 4f) return;
+        
         if (CalculateDistance() > shootingRange)
         {
             controller.movementFSM.ChangeState(EnemyStateEnums.CHASE);
@@ -84,6 +86,7 @@ public class DashEnemyType : EnemyType
     {
         controller.rigid.velocity = Vector2.zero;
     }
+
 
     // 경직
     public override void StiffenEnter()

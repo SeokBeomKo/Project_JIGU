@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
         {
             movementFSM.currentState.Update();
         }
-        // Debug.Log(movementFSM.currentState);
+         Debug.Log(movementFSM.currentState);
     }
 
     private void FixedUpdate()

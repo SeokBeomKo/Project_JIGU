@@ -9360,7 +9360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &63856220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28005,7 +28005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &270548031
 Transform:
   m_ObjectHideFlags: 0
@@ -28225,7 +28225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputVec: {x: 0, y: 0}
-  speed: 8
+  speed: 5
 --- !u!70 &357342529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -57070,8 +57070,8 @@ MonoBehaviour:
   controller: {fileID: 1115126717}
   chaseSpeed: 2
   shootingRange: 3
-  attackDelayTime: 1.5
-  dashSpeed: 4
+  attackDelayTime: 0.5
+  dashSpeed: 5
 --- !u!1 &1158944790
 GameObject:
   m_ObjectHideFlags: 0
@@ -66477,7 +66477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1371055435
 Animator:
   serializedVersion: 5
