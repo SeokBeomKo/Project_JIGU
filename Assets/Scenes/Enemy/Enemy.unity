@@ -9360,7 +9360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &63856220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28005,7 +28005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &270548031
 Transform:
   m_ObjectHideFlags: 0
@@ -28062,7 +28062,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 1228555292, guid: 8dc878dfb76c0eb469136edcaecc7d5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 583956bfee395468aa5f219a45445e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -57044,7 +57044,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: -935684229, guid: 7fd33dbc47a28f04292589224f67f02b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c02fc38d665a49bab82cddcaf66fcd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -57072,6 +57072,7 @@ MonoBehaviour:
   shootingRange: 3
   attackDelayTime: 0.5
   dashSpeed: 5
+  dashDistance: 4
 --- !u!1 &1158944790
 GameObject:
   m_ObjectHideFlags: 0
@@ -66477,7 +66478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1371055435
 Animator:
   serializedVersion: 5
@@ -66602,7 +66603,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 1635155660, guid: 47f0c5c5914246f45b9c568e28996032, type: 3}
+  m_Sprite: {fileID: 1717734974, guid: c97300c7eefd9d041839acf6f9ca8598, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

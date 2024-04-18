@@ -15,6 +15,8 @@ public class DashEnemyType : EnemyType
 
     [Header("돌진 속도")]
     public float dashSpeed;
+    [Header("돌진 거리")]
+    public float dashDistance;
     private Vector2 dashDirection;
     private Vector3 dashStartPosition;
 
@@ -71,7 +73,7 @@ public class DashEnemyType : EnemyType
     {
         //FlipSprite();
 
-        if ((controller.transform.position - dashStartPosition).magnitude < 4f) return;
+        if ((controller.transform.position - dashStartPosition).magnitude < dashDistance) return;
         
         if (CalculateDistance() > shootingRange)
         {
