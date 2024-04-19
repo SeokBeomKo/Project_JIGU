@@ -3,23 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class UserCharacterController : BaseCharacterController
 {
-    [SerializeField] public Rigidbody2D rigid;
+    
     public Animator animator;
     public CharacterSpriteController spriteController;
-    public PlayerMovementFSM movementFSM;
     public Vector2 moveDirection;
     public Vector2 targetPosition;
-
     public GameObject weapon;
+
+    [HideInInspector] public CharacterMovementFSM movementFSM;
 
 
     public float moveSpeed = 10f;
 
     private void Awake() 
     {
-        FSMFactory<PlayerMovementFSM, PlayerMovementStateEnums, PlayerController> factory = new PlayerMovementFSMFactory();
+        FSMFactory<CharacterMovementFSM, CharacterStateEnums, UserCharacterController> factory = new CharacterFSMFactory();
         movementFSM = factory.CreateFSM(this);
     }
 

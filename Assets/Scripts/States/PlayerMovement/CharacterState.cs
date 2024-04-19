@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerState : IState
+public abstract class CharacterState : IState
 {
-    protected PlayerController controller;
-    protected PlayerMovementFSM stateMachine;
+    protected UserCharacterController controller;
+    protected CharacterMovementFSM stateMachine;
 
-    public PlayerState(PlayerController controller)
+    public CharacterState(UserCharacterController controller)
     {
         this.controller = controller;
         this.stateMachine = controller.movementFSM;

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementDeadState : PlayerState
+public class CharacterDeadState : CharacterState
 {
-    public PlayerMovementDeadState(PlayerController controller) : base(controller)
+    public CharacterDeadState(UserCharacterController controller) : base(controller)
     {
     }
 

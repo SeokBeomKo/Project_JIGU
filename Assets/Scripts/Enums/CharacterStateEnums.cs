@@ -1,5 +1,5 @@
 
-public enum PlayerMovementStateEnums
+public enum CharacterStateEnums
 {
     IDLE,           // 대기 상태
     MOVE,           // 이동 상태

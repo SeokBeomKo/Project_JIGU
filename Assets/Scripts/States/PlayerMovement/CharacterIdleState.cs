@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementIdleState : PlayerState
+public class CharacterIdleState : CharacterState
 {
-    public PlayerMovementIdleState(PlayerController controller) : base(controller)
+    public CharacterIdleState(UserCharacterController controller) : base(controller)
     {
     }
 
