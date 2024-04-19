@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterIdleState : CharacterState
 {
-    public CharacterIdleState(UserCharacterController controller) : base(controller)
+    public CharacterIdleState(BaseCharacterController controller) : base(controller)
     {
     }
 

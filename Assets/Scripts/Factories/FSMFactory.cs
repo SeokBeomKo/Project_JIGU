@@ -1,4 +1,4 @@
-public abstract class FSMFactory<T, U, C> where T : BaseFSM<U>
+public abstract class FSMFactory<TFSM, TState, TController> where TFSM : BaseFSM<TState>
 {
-    public abstract T CreateFSM(C controller);
+    public abstract TFSM CreateFSM(TController controller);
 }

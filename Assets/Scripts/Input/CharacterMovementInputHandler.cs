@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMoveInputHandler : MonoBehaviour
+public class CharacterMovementInputHandler : MonoBehaviour
 {
     public delegate void MoveInput(Vector2 dir);
     public event MoveInput onMoveInput;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputCenter : MonoBehaviour
 {
-    public PlayerMoveInputHandler handler;
+    public CharacterMovementInputHandler handler;
     public UserCharacterController controller;
 
     private void Awake() 
@@ -15,13 +15,13 @@ public class InputCenter : MonoBehaviour
 
     public void Idle(Vector2 dir)
     {
-        controller.movementFSM.ChangeState(CharacterStateEnums.IDLE);
+        controller.characterFSM.ChangeState(CharacterStateEnums.IDLE);
     }
 
     public void Move(Vector2 dir)
     {
         controller.moveDirection = dir;
 
-        controller.movementFSM.ChangeState(CharacterStateEnums.MOVE);
+        controller.characterFSM.ChangeState(CharacterStateEnums.MOVE);
     }
 }

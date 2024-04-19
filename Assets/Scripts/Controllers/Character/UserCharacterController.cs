@@ -5,29 +5,20 @@ using UnityEngine;
 
 public class UserCharacterController : BaseCharacterController
 {
-    
-    public Animator animator;
-    public CharacterSpriteController spriteController;
-    public Vector2 moveDirection;
     public Vector2 targetPosition;
     public GameObject weapon;
 
-    [HideInInspector] public CharacterMovementFSM movementFSM;
-
-
-    public float moveSpeed = 10f;
-
     private void Awake() 
     {
-        FSMFactory<CharacterMovementFSM, CharacterStateEnums, UserCharacterController> factory = new CharacterFSMFactory();
-        movementFSM = factory.CreateFSM(this);
+        var factory = new CharacterMovementFSMFactory();
+        characterFSM = factory.CreateFSM(this);
     }
 
     private void Update() 
     {
-        if (movementFSM != null)    
+        if (characterFSM != null)    
         {
-            movementFSM.currentState.Update();
+            characterFSM.currentState.Update();
         }
 
         targetPosition = FindClosestObjectPosition();
@@ -51,16 +42,13 @@ public class UserCharacterController : BaseCharacterController
 
     private void FixedUpdate() 
     {
-        if (movementFSM != null)
+        if (characterFSM != null)
         {
-            movementFSM.currentState.FixedUpdate();
+            characterFSM.currentState.FixedUpdate();
         }
     }
 
-    public void Move()
-    {
-        rigid.velocity = moveDirection * moveSpeed;
-    }
+    
 
     public LayerMask enemyLayer;
     public LayerMask entityLayer;
@@ -112,4 +100,8 @@ public class UserCharacterController : BaseCharacterController
         // 해당 레이어의 객체가 없을 경우 null 반환
         return null;
     }
+}
+
+internal class CharacterMovementFSMFactory<T1, T2, T3>
+{
 }

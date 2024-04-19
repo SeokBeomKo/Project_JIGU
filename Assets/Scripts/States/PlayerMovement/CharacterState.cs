@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class CharacterState : IState
 {
-    protected UserCharacterController controller;
+    protected BaseCharacterController controller;
     protected CharacterMovementFSM stateMachine;
 
-    public CharacterState(UserCharacterController controller)
+    public CharacterState(BaseCharacterController controller)
     {
         this.controller = controller;
-        this.stateMachine = controller.movementFSM;
+        this.stateMachine = controller.characterFSM;
     }
 
     public abstract void Enter();

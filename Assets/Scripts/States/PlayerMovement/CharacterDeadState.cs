@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterDeadState : CharacterState
 {
-    public CharacterDeadState(UserCharacterController controller) : base(controller)
+    public CharacterDeadState(BaseCharacterController controller) : base(controller)
     {
     }
 

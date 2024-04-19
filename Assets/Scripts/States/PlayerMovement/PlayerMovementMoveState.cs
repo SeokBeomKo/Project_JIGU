@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMoveState : CharacterState
 {
-    public CharacterMoveState(UserCharacterController controller) : base(controller)
+    public CharacterMoveState(BaseCharacterController controller) : base(controller)
     {
     }
 
