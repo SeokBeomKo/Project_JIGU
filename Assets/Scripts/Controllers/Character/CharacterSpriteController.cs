@@ -24,11 +24,9 @@ public class CharacterSpriteController : MonoBehaviour
         if (isFacingLeft != isLeft)
         {
             isFacingLeft = isLeft; // 현재 방향 상태 업데이트
-
-            // 모든 렌더러의 flipX 설정
-            foreach (var renderer in rendererArray)
+            for (int i = 0; i < spriteArray.Length; i++)
             {
-                renderer.flipX = isLeft;
+                rendererArray[i].flipX = isLeft;
             }
 
             // 위치 조정
@@ -39,7 +37,7 @@ public class CharacterSpriteController : MonoBehaviour
     private void AdjustPositions()
     {
         // 팔과 다리에 해당하는 렌더러들의 위치만 조정
-        for (int i = 2; i <= 5; i++) // 인덱스 [2]부터 [5]까지 조정
+        for (int i = 2; i < spriteArray.Length; i++) // 인덱스 [2]부터 [5]까지 조정
         {
             Vector3 localPos = rendererArray[i].transform.localPosition;
             rendererArray[i].transform.localPosition = new Vector3(-localPos.x, localPos.y, localPos.z);

@@ -7,6 +7,10 @@ public class AutoCharacterController : BaseCharacterController
 
     private void Awake()
     {
+        moveSpeed = 0.25f;
+        
+        var factory = new CharacterMovementFSMFactory();
+        characterFSM = factory.CreateFSM(this);
         StartCoroutine(ChangeStateCoroutine());
     }
 
@@ -39,8 +43,13 @@ public class AutoCharacterController : BaseCharacterController
 
     private void ChangeDirection()
     {
-        int temp = Random.Range(0, 2) == 0 ? -1 : 1;
-        moveDirection.x = temp;
+        moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        spriteController.Flip(moveDirection.x < 0);
+    }
+
+    private void ChangeSpeed()
+    {
+        moveSpeed = Random.Range(0.1f, 0.5f);
     }
 
     private void ChangeState()
@@ -52,8 +61,7 @@ public class AutoCharacterController : BaseCharacterController
         else
         {
             ChangeDirection();
-            
-            spriteController.Flip(moveDirection.x < 0);
+            ChangeSpeed();
 
             characterFSM.ChangeState(CharacterStateEnums.MOVE);
         }
